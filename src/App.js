@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
+import MusicPlayer from './components/MusicPlayer';
 import SearchBar from './components/SearchBar';
 import SideBar from './components/SideBar';
 import TopPlay from './components/TopPlay';
@@ -12,7 +13,7 @@ const App = () => {
   return (
     <div className="relative flex">
       <SideBar />
-      <div className="flex-1 flex flex-col bg-gradient-to-br from-[#000000] to-[#eb5757]">
+      <div className="flex-1 flex flex-col bg-gradient-to-br from-[#eb5757] to-[#000000]">
         <SearchBar />
 
         <div className="px-6 h-[calc(100vh-72px)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">
@@ -35,7 +36,7 @@ const App = () => {
 
       {activeSong?.title && (
         <div className="absolute h-28 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-[#2a2a80] backdrop-blur-lg rounded-t-3xl z-10">
-     
+            <MusicPlayer />
         </div>
       )}
     </div>
