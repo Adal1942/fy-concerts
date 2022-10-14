@@ -4,7 +4,13 @@ import MusicPlayer from './components/MusicPlayer';
 import SearchBar from './components/SearchBar';
 import SideBar from './components/SideBar';
 import TopPlay from './components/TopPlay';
-import AroundYou from './pages/AroundYou'; import ArtistDetails from './pages/ArtistDetails'; import Discover from './pages/Discover'; import Search from './pages/Search'; import SongDetails from './pages/SongDetails'; import TopArtists from './pages/TopArtists'; import TopCharts from './pages/TopCharts'; 
+import AroundYou from './pages/AroundYou'; 
+import ArtistDetails from './pages/ArtistDetails'; 
+import Discover from './pages/Discover'; 
+import Search from './pages/Search'; 
+import SongDetails from './pages/SongDetails'; 
+import TopArtists from './pages/TopArtists'; 
+import TopCharts from './pages/TopCharts'; 
 import './App.css';
  
 const App = () => {
@@ -15,7 +21,6 @@ const App = () => {
       <SideBar />
       <div className="flex-1 flex flex-col bg-gradient-to-br from-[#eb5757] to-[#000000]">
         <SearchBar />
-
         <div className="px-6 h-[calc(100vh-72px)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">
           <div className="flex-1 h-fit pb-40">
             <Routes>
