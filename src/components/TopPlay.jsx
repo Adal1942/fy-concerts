@@ -11,10 +11,19 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 
 const TopChartCard = ({ song, i, isPlaying, activeSong, handlePauseClick, handlePlayClick}) => (
-    <div className="w-full flex flex-row items-center hover:bg-[#4c426e] py-2 p-4 rounded-lg cursor-pointer mb-2">
-        <h3 className="font-bold text-base text-black mr-3">{i + 1}.</h3>
+    <div className="h-[200px] flex flex-row items-center hover:bg-[#7ed957] py-2 p-4 rounded-lg cursor-pointer mb-2">
         <div className="flex-1 flex flex-row justify-between items-center">
-            <img className="w-14 h-14 rounded-lg" src={song?.images?.coverart} alt={song?.title}/>
+            <div className="relative w-full h-46 group">
+                <div className={`absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex ${activeSong?.title === song.title ? 'flex bg-black bg-opacity-70' : 'hidden'} `}>
+                        <PlayPause 
+                            isPlaying={isPlaying}
+                            activeSong={activeSong}
+                            song={song}
+                            handlePause={handlePauseClick}
+                            handlePlay={handlePlayClick}/>
+                </div>    
+            <img className="w-46 h-46 rounded-lg" src={song?.images?.coverart} alt={song?.title}/>
+            </div>
             <div className="flex-1 flex flex-col justify-center mx-3">
                 <Link to={`/songs/${song.key}`}>
                     <p className="text-xl font-bold text-black">{song?.title}</p>
@@ -24,13 +33,6 @@ const TopChartCard = ({ song, i, isPlaying, activeSong, handlePauseClick, handle
                 </Link>
             </div>
         </div>
-        <PlayPause 
-            isPlaying={isPlaying}
-            activeSong={activeSong}
-            song={song}
-            handlePause={handlePauseClick}
-            handlePlay={handlePlayClick}>
-        </PlayPause>
     </div>
 )
 
@@ -59,55 +61,27 @@ const TopPlay = () => {
     };
 
     return(
-        <div ref={divRef} className="xl:ml-6 ml-0 xl:mb-0 mb-6 flex-1 xl:max-w-[400px] max-w-full flex flex-col">
-            <div className="w-full flex flex-col">
+        <div ref={divRef} className="xl:ml-6 ml-0 xl:mb-0 mb-6 flex-1 max-w-full flex flex-col">
+            <div className="w-full flex flex-col mt-6">
                 <div className="flex flex-row justify-between items-center">
-                    <h2 className="text-black font-bold text-2xl">Top Charts</h2>
+                    <h2 className="font-bold text-3xl text-black text-left">Top Charts</h2>
                     <Link to="/top-charts">
                         <p className="text-black text-base cursor-pointer">See more</p>
                     </Link>
                 </div>
-                <div className="mt-4 flex flex-col">
-                    {topPlays?.map((song, i) => (
-                        <TopChartCard 
-                            key={song.key}
-                            song={song}
-                            i={i}
-                            isPlaying={isPlaying}
-                            activeSong={activeSong}
-                            handlePauseClick={handlePauseClick}
-                            handlePlayClick={() => handlePlayClick(song, i)}
-                        />
-                    ))}
-                </div>
-            </div>
-
-            <div className="w-full flex flex-col mt-6">
-                <div className="flex flex-row justify-between items-center">
-                    <h2 className="text-black font-bold text-2xl">Top Artists</h2>
-                    <Link to="/top-artists">
-                        <p className="text-black text-base cursor-pointer">See more</p>
-                    </Link>
-                </div> 
-                <Swiper 
-                    slidesPerView="auto"
-                    spaceBetween={10}
-                    freeMode
-                    centeredSlides
-                    centeredSlidesBounds
-                    modules={[FreeMode]}
-                    className="mt-4">
-                     {topPlays?.map((song, i) => (
-                        <SwiperSlide
-                            key={song?.key}
-                            style={{ width: '20%', height: 'auto'}}
-                            className="shadow-lg rounded-full animate-slideright">
-                             <Link to={`/artists/${song?.artists[0].adamid}`}>
-                                <img src={song?.images.background} alt="name" className="rounded-full w-full object-cover"/>
-                             </Link>
-                        </SwiperSlide>
-                     ))}
-                </Swiper>
+                    <div className="mt-4 flex flex-row">
+                        {topPlays?.map((song, i) => (
+                            <TopChartCard 
+                                key={song.key}
+                                song={song}
+                                i={i}
+                                isPlaying={isPlaying}
+                                activeSong={activeSong}
+                                handlePauseClick={handlePauseClick}
+                                handlePlayClick={() => handlePlayClick(song, i)}
+                            />
+                        ))}
+                    </div>
             </div>
         </div>
     )
