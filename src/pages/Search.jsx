@@ -12,7 +12,7 @@ const Search = () => {
     
     const songs = data?.tracks?.hits?.map((song) => song.track);
 
-    if (isFetching) return <Loader title="Loading top charts" />;
+    if (isFetching) return <Loader title="Searching ..." />;
 
     if (error) return <Error />;
     
@@ -20,7 +20,7 @@ const Search = () => {
         <div className="flex flex-col">
             <h2 className="font-bold text-3xl text-black text-left mt-4 mb-10">Showing results for <span className="font-black">{searchTerm}</span></h2>
 
-            <div className="flex flex-wrap sm:justify-start justify-center gap-8">
+            <div className="flex flex-wrap sm:justify-start justify-center gap-4">
                 {songs?.map((song, i) => (
                     <SongCard 
                         key={song.key}
