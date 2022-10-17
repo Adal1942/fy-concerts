@@ -28,7 +28,7 @@ const Discover = () => {
         <div className="flex flex-col">
 
             <div className="w-full flex justify-between items-center sm:flex-row flex-col mt-6 mb-10">
-                <h2 className="font-bold text-3xl text-black text-left">Discover {genreTitle}</h2>
+                <h2 className="font-bold text-3xl text-primary text-left">Discover {genreTitle}</h2>
                 <select className="bg-black text-gray-300 p-3 text-sm rounded-lg outline-none sm:mt-0 mt-5" 
                         onChange={(e) => dispatch(selectGenreListId(e.target.value))} 
                         value={genreListId || 'pop'}>

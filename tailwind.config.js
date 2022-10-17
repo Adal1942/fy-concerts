@@ -3,6 +3,14 @@ module.exports = {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      backgroundColor: {
+        primary: 'var(--color-bg-primary)',
+        secundary: 'var(--color-bg-secundary)',
+      },
+      textColor: {
+        primary: 'var(--color-text-primary)',
+        secundary: 'var(--color-text-secundary)',
+      },
       colors: {
         black: '#191624',
       },

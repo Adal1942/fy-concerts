@@ -6,10 +6,10 @@ const Seekbar = ({ value, min, max, onInput, setSeekTime, appTime }) => {
 
   return (
     <div className="hidden sm:flex flex-row items-center">
-      <button type="button" onClick={() => setSeekTime(appTime - 5)} className="hidden lg:mr-4 lg:block text-[#0f6b6b]">
+      <button type="button" onClick={() => setSeekTime(appTime - 5)} className="hidden lg:mr-4 lg:block text-secundary">
         -
       </button>
-      <p className="text-[#0f6b6b]">{value === 0 ? '0:00' : getTime(value)}</p>
+      <p className="text-secundary">{value === 0 ? '0:00' : getTime(value)}</p>
       <input
         type="range"
         step="any"
@@ -19,8 +19,8 @@ const Seekbar = ({ value, min, max, onInput, setSeekTime, appTime }) => {
         onInput={onInput}
         className="md:block w-24 md:w-96 2xl:w-96 h-1 mx-4 2xl:mx-6 rounded-lg"
       />
-      <p className="text-[#0f6b6b]">{max === 0 ? '0:00' : getTime(max)}</p>
-      <button type="button" onClick={() => setSeekTime(appTime + 5)} className="hidden lg:ml-4 lg:block text-[#0f6b6b]">
+      <p className="text-secundary">{max === 0 ? '0:00' : getTime(max)}</p>
+      <button type="button" onClick={() => setSeekTime(appTime + 5)} className="hidden lg:ml-4 lg:block text-secundary">
         +
       </button>
     </div>
